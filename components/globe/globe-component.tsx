@@ -11,12 +11,12 @@ import type { Event, EventType } from "@/lib/mock-data"
 import { getEventColor } from "@/lib/utils"
 import { countries, type Country } from '@/lib/countries'
 import Search from '@/components/Search'
-import { 
-  newsData, 
-  weatherData, 
-  earthquakeData, 
-  volcanoData, 
-  stockData, 
+import {
+  newsData,
+  weatherData,
+  earthquakeData,
+  volcanoData,
+  stockData,
   sportsData,
   type NewsItem,
   type WeatherData,
@@ -74,7 +74,7 @@ function useLocalData() {
         };
         filteredData = dataMap[cat].filter((item: FilterableData) => item.country_code.toLowerCase() === code);
       }
-      
+
       setSelectedData(filteredData);
     } finally {
       setLoading(false)
@@ -84,18 +84,18 @@ function useLocalData() {
   return { data: selectedData, loading, getLocalData, country, setCountry, category, setCategory }
 }
 
-function NewsSidebar({ data, loading, country, category, setCategory, onCategoryChange, onCountrySelect, onClose }: { 
-  data: any[], 
-  loading: boolean, 
-  country: string | null, 
-  category: string, 
-  setCategory: (cat: string) => void, 
+function NewsSidebar({ data, loading, country, category, setCategory, onCategoryChange, onCountrySelect, onClose }: {
+  data: any[],
+  loading: boolean,
+  country: string | null,
+  category: string,
+  setCategory: (cat: string) => void,
   onCategoryChange: (cat: string) => void,
   onCountrySelect: (country: Country) => void,
-  onClose: () => void 
+  onClose: () => void
 }) {
   const [searchQuery, setSearchQuery] = useState('')
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   const handleSearch = (query: string) => {
     setSearchQuery(query)
@@ -103,10 +103,10 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
   }
 
   const eventCategories = [
-    { 
-      name: 'news', 
-      label: 'News', 
-      color: 'bg-red-500', 
+    {
+      name: 'news',
+      label: 'News',
+      color: 'bg-red-500',
       hoverColor: 'hover:bg-red-600',
       icon: (
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,10 +114,10 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
         </svg>
       )
     },
-    { 
-      name: 'weather', 
-      label: 'Weather', 
-      color: 'bg-blue-500', 
+    {
+      name: 'weather',
+      label: 'Weather',
+      color: 'bg-blue-500',
       hoverColor: 'hover:bg-blue-600',
       icon: (
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,10 +125,10 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
         </svg>
       )
     },
-    { 
-      name: 'earthquake', 
-      label: 'Earthquake', 
-      color: 'bg-orange-500', 
+    {
+      name: 'earthquake',
+      label: 'Earthquake',
+      color: 'bg-orange-500',
       hoverColor: 'hover:bg-orange-600',
       icon: (
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -136,10 +136,10 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
         </svg>
       )
     },
-    { 
-      name: 'volcano', 
-      label: 'Volcano', 
-      color: 'bg-purple-500', 
+    {
+      name: 'volcano',
+      label: 'Volcano',
+      color: 'bg-purple-500',
       hoverColor: 'hover:bg-purple-600',
       icon: (
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -147,10 +147,10 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
         </svg>
       )
     },
-    { 
-      name: 'stock', 
-      label: 'Stock', 
-      color: 'bg-green-500', 
+    {
+      name: 'stock',
+      label: 'Stock',
+      color: 'bg-green-500',
       hoverColor: 'hover:bg-green-600',
       icon: (
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -158,10 +158,10 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
         </svg>
       )
     },
-    { 
-      name: 'sports', 
-      label: 'Sports', 
-      color: 'bg-yellow-500', 
+    {
+      name: 'sports',
+      label: 'Sports',
+      color: 'bg-yellow-500',
       hoverColor: 'hover:bg-yellow-600',
       icon: (
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -175,7 +175,7 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed left-4 top-4 z-50 p-2 bg-gray-900 rounded-lg shadow-lg hover:bg-gray-800 transition-colors"
+        className="transition-all ease-in-out duration-700 fixed left-4 top-4 z-50 p-2 bg-gray-900 rounded-lg shadow-lg hover:bg-gray-800 "
       >
         <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -185,13 +185,13 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
   }
 
   return (
-    <div className="fixed left-0 top-0 w-96 h-full bg-gray-900 shadow-lg overflow-y-auto p-4 z-50 border-l border-gray-700">
+    <div className="fixed left-0 top-0 w-96 h-[400px] bg-transparent shadow-lg overflow-y-hidden p-4 z-50 ">
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center space-x-3">
-          <h2 className="text-2xl font-bold text-white">GlobeEvents</h2>
-          <span className="rounded bg-green-500 px-2 py-0.5 text-xs font-semibold text-white">
-            LIVE
-          </span>
+          {/* <h2 className="text-2xl font-bold text-white">Live Sphere</h2> */}
+          <h2 className="rounded bg-green-500 px-2 py-0.5 text-sm font-semibold text-white">
+            LIVE SPHERE
+          </h2>
         </div>
         <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white">
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -202,8 +202,8 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
 
       <div className="mb-4">
         <div className="mb-4">
-          <Search 
-            onSearch={handleSearch} 
+          <Search
+            onSearch={handleSearch}
             onCountrySelect={onCountrySelect}
             placeholder="Search countries..."
             countries={countries}
@@ -215,9 +215,8 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
             <button
               key={cat.name}
               onClick={() => onCategoryChange(cat.name)}
-              className={`flex items-center justify-center space-x-2 rounded-lg p-2 text-white transition-all duration-200 ${
-                category === cat.name ? cat.color : 'bg-gray-700'
-              } ${cat.hoverColor} transform hover:scale-105`}
+              className={`flex items-center justify-center space-x-2 rounded-lg p-2 text-white transition-all duration-200 ${category === cat.name ? cat.color : 'bg-gray-700'
+                } ${cat.hoverColor} transform hover:scale-105`}
             >
               {cat.icon}
               <span>{cat.label}</span>
@@ -299,8 +298,9 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
         ))}
         {!loading && data.length === 0 && (
           <div className="text-center text-gray-400 py-8">
-            No data available for this selection.
-          </div>
+            <span className="p-1 text-md">⚠️</span>
+            <span>API usage has been temporarily suspended due to usage limits being reached.Thank you for your patience and understanding.</span> 
+            </div>
         )}
       </div>
     </div>
@@ -411,12 +411,12 @@ export default function GlobeComponent({ events }: GlobeComponentProps) {
   const arcsData =
     events.length > 1
       ? events.slice(0, -1).map((event, idx) => ({
-          startLat: event.lat,
-          startLng: event.lng,
-          endLat: events[idx + 1].lat,
-          endLng: events[idx + 1].lng,
-          color: getEventColor(event.type as EventType),
-        }))
+        startLat: event.lat,
+        startLng: event.lng,
+        endLat: events[idx + 1].lat,
+        endLng: events[idx + 1].lng,
+        color: getEventColor(event.type as EventType),
+      }))
       : []
 
   // Labels data
@@ -463,7 +463,7 @@ export default function GlobeComponent({ events }: GlobeComponentProps) {
   const handlePolygonClick = (country: any) => {
     const code = country.properties.ISO_A2 || country.properties.ISO_A3 || country.properties.name
     if (code) {
-      const selectedCountry = countries.features.find((c: any) => 
+      const selectedCountry = countries.features.find((c: any) =>
         (c.properties.ISO_A2 || c.properties.ISO_A3 || c.properties.name).toLowerCase() === code.toLowerCase()
       )
       if (selectedCountry?.properties) {
@@ -481,17 +481,17 @@ export default function GlobeComponent({ events }: GlobeComponentProps) {
       if (controls) {
         // Disable auto-rotation while moving to target
         controls.autoRotate = false
-        
+
         // Convert to radians
         const phi = (90 - lat) * (Math.PI / 180)
         const theta = (lng + 180) * (Math.PI / 180)
-        
+
         // Calculate target position
         const radius = 2 // Adjust this value based on your globe size
         const x = -radius * Math.sin(phi) * Math.cos(theta)
         const y = radius * Math.cos(phi)
         const z = radius * Math.sin(phi) * Math.sin(theta)
-        
+
         // Animate to new position
         globeRef.current.pointOfView({
           lat,
@@ -514,15 +514,15 @@ export default function GlobeComponent({ events }: GlobeComponentProps) {
         }
       }
       rotateGlobeToLocation(lat, lng)
-      
+
       // Find the country polygon to show the popup
-      const countryPolygon = countries.features.find((c: any) => 
+      const countryPolygon = countries.features.find((c: any) =>
         (c.properties.ISO_A2 || c.properties.ISO_A3 || c.properties.name).toLowerCase() === selectedCountry.code.toLowerCase()
       )
       if (countryPolygon) {
         setHoverD(countryPolygon)
       }
-      
+
       // Also trigger the data loading for this country
       if (selectedCountry.code) {
         localDataHook.getLocalData(selectedCountry.code, localDataHook.category)

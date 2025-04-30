@@ -109,10 +109,10 @@ export default function EventModal({ event, onClose }: EventModalProps) {
 
         {/* Footer */}
         <div className="border-t p-4">
-          <Button className="w-full" asChild>
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              Read Full Article <ExternalLink className="ml-2 h-4 w-4" />
-            </a>
+          <Button className="w-full hover:bg-blue-700" asChild>
+            <span className="text-white hover:text-grey-700" >
+              Read Full Article <ExternalLink className="disabled ml-2 h-4 w-4" />
+            </span>
           </Button>
         </div>
       </motion.div>

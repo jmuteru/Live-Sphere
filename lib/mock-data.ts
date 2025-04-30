@@ -33,7 +33,7 @@ export const mockEvents: Event[] = [
     lat: 46.2044,
     lng: 6.1432,
     timestamp: "2025-04-27T09:30:00Z",
-    source: "Global News Network",
+    source: "News Times",
     image: "https://img.freepik.com/free-photo/close-up-woman-holding-peace-placard_23-2149163243.jpg",
   },
   {
