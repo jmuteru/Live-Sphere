@@ -1,7 +1,7 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
-import Globe from '@/components/globe/globe';
 import { Event, events } from '../data/events';
 import { countries, type Country } from '@/lib/countries';
 import { 
@@ -18,6 +18,19 @@ import {
   StockData,
   SportsData
 } from '../data/db';
+
+// Dynamically import the Globe component with no SSR
+const Globe = dynamic(() => import('@/components/globe/globe'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-screen w-full items-center justify-center bg-black">
+      <div className="text-center text-white">
+        <div className="mb-4 text-2xl font-bold">Loading Globe...</div>
+        <div className="h-8 w-32 animate-pulse rounded-full bg-gray-600"></div>
+      </div>
+    </div>
+  )
+});
 
 type EventCategory = 'news' | 'weather' | 'earthquake' | 'volcano' | 'stock' | 'sports' | 'all';
 type EventData = NewsItem | WeatherData | EarthquakeData | VolcanoData | StockData | SportsData;
@@ -77,7 +90,7 @@ export default function NewsPage() {
       ];
     }
 
-    const dataMap = {
+    const dataMap: Record<string, any[]> = {
       news: newsData,
       weather: weatherData,
       earthquake: earthquakeData,
@@ -413,7 +426,7 @@ export default function NewsPage() {
             <div className="space-y-4">
               {displayedData.length > 0 ? (
                 displayedData.map((data, index) => (
-                  <div key={data.id}>
+                  <div key={index}>
                     {renderEventData(data)}
                   </div>
                 ))
@@ -439,4 +452,4 @@ export default function NewsPage() {
       </div>
     </div>
   );
-} 
+}
