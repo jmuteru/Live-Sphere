@@ -65,7 +65,6 @@
     "react-dom": "^18.3.1",
     "react-globe.gl": "^2.33.2",
     "react-hook-form": "^7.54.1",
-    "react-native": "latest",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
     "sonner": "^1.7.1",

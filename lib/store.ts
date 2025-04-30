@@ -59,7 +59,7 @@ export const useGlobeStore = create<GlobeState>((set) => ({
   // Globe settings
   autoRotate: true,
   toggleAutoRotate: () => set((state) => ({ autoRotate: !state.autoRotate })),
-  rotationSpeed: 0.1,
+  rotationSpeed: 0.5,
   setRotationSpeed: (speed: number) => set({ rotationSpeed: speed }),
   activeLayer: "polygons",
   setActiveLayer: (layer: LayerType) => set({ activeLayer: layer }),

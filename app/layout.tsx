@@ -4,7 +4,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Live Sphere',
+  title: 'Globe Events',
   description: 'Your global news and events hub',
 }
 

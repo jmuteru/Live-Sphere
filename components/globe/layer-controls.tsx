@@ -8,11 +8,10 @@ import { useGlobeStore } from "@/lib/store"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
-//  layer types
+// Available layer types
 const layers = [
-  //TODO: implement other layers...
-  // { id: "points", name: "Points", description: "Show events as points on the globe" },
-  // { id: "arcs", name: "Arcs", description: "Connect events with arcs" },
+  { id: "points", name: "Points", description: "Show events as points on the globe" },
+  { id: "arcs", name: "Arcs", description: "Connect events with arcs" },
   { id: "polygons", name: "Countries", description: "Show country boundaries" },
   { id: "hexed-polygons", name: "Hexed Polygons", description: "Show countries as hexagonal dot polygons" },
 ]
@@ -21,7 +20,7 @@ export default function LayerControls() {
   const { activeLayer, setActiveLayer, isLayerControlsOpen, toggleLayerControls } = useGlobeStore()
 
   return (
-    <div className="absolute bottom-4 left-4 z-10  top -2">
+    <div className="absolute bottom-4 left-4 z-10">
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
