@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Globe from '@/components/Globe';
-import { Event, events } from '@/data/events';
+import Globe from '@/components/globe/globe';
+import { Event, events } from '../data/events';
 import { countries, type Country } from '@/lib/countries';
 import { 
   newsData, 
@@ -17,7 +17,7 @@ import {
   VolcanoData,
   StockData,
   SportsData
-} from '@/data/db';
+} from '../data/db';
 
 type EventCategory = 'news' | 'weather' | 'earthquake' | 'volcano' | 'stock' | 'sports' | 'all';
 type EventData = NewsItem | WeatherData | EarthquakeData | VolcanoData | StockData | SportsData;
