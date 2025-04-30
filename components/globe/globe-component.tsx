@@ -95,7 +95,7 @@ function NewsSidebar({ data, loading, country, category, setCategory, onCategory
   onClose: () => void
 }) {
   const [searchQuery, setSearchQuery] = useState('')
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   const handleSearch = (query: string) => {
     setSearchQuery(query)
